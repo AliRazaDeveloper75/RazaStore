@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+    body {
+        background-color: #1a1325;
+        color: #f5deb3;
+    }
+
+    .contact-header {
+        background-color: #261b3e;
+        padding: 60px 20px;
+        text-align: center;
+    }
+
+    .contact-header h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #f5deb3;
+    }
+
+    .contact-header p {
+        color: #d4c5a1;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    .contact-section {
+        padding: 60px 20px;
+    }
+
+    .form-control,
+    .btn-custom {
+        border-radius: 0.5rem;
+    }
+
+    .form-control {
+        background-color: #2a1f3e;
+        color: #fff;
+        border: 1px solid #3c3058;
+    }
+
+    .form-control::placeholder {
+        color: #a8957a;
+    }
+
+    .btn-custom {
+        background-color: #f5deb3;
+        color: #1a1325;
+        font-weight: bold;
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    .btn-custom:hover {
+        background-color: #e8c994;
+    }
+
+    .contact-info {
+        background-color: #201735;
+        padding: 30px;
+        border-radius: 8px;
+    }
+
+    .contact-info p,
+    .contact-info h4 {
+        color: #d4c5a1;
+    }
+
+    .icon {
+        font-size: 18px;
+        color: #f5deb3;
+        margin-right: 10px;
+    }
+
+    .contact-footer {
+        background-color: #1a1325;
+        padding: 30px;
+        text-align: center;
+        color: #b9a889;
+        font-size: 14px;
+        border-top: 1px solid #3c3058;
+    }
+</style>
+
+<div class="contact-header">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>We’d love to hear from you. Whether you have a question, feedback, or issue – we’re here to help.</p>
+    </div>
+</div>
+
+<div class="contact-section container">
+    <div class="row g-4">
+        <!-- Contact Form -->
+        <div class="col-lg-7 col-md-12">
+            <h4 class="mb-4">Send Us A Message</h4>
+            <form>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Subject" required>
+                </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="5" placeholder="Your Message..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-5 col-md-12">
+            <br/>
+            <br/>
+            <div class="contact-info h-100">
+                <h4 class="mb-4">Reach Us</h4>
+                <p><i class="fas fa-map-marker-alt icon"></i>123 Market Street, Lahore, Pakistan</p>
+                <p><i class="fas fa-envelope icon"></i>support@razastore.com</p>
+                <p><i class="fas fa-phone icon"></i>+92 300 1234567</p>
+                <p><i class="fas fa-clock icon"></i>Mon - Sat: 10:00 AM to 7:00 PM</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

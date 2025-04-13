@@ -335,3 +335,12 @@ def reset_password(request):
 
     else:
         return render(request, 'shop/accounts/forget_password/reset_password.html')
+    
+
+
+
+def about(request):
+    return render(request, 'shop/accounts/about.html')
+
+def contact(request):
+    return render(request, 'shop/accounts/contact.html')

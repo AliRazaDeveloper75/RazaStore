@@ -172,8 +172,8 @@
                                         </ul>
                                     </li>
                                     {% comment %} <li><a href="blog.html">Blog</a></li> {% endcomment %}
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{% url 'accounts:about' %}">About</a></li>
+                                    <li><a href="{% url 'accounts:contact' %}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -192,9 +192,9 @@
                                                 {% endfor %}
                                             </ul>
                                         </li>
-                                        <li><a style="color:#1c1427" href="blog.html">Blog</a></li>
-                                        <li><a style="color:#1c1427" href="about.html">About</a></li>
-                                        <li><a style="color:#1c1427" href="contact.html">Contact</a></li>
+                                        {% comment %} <li><a style="color:#1c1427" href="blog.html">Blog</a></li> {% endcomment %}
+                                        <li><a href="{% url 'accounts:about' %}">About</a></li>
+                                    <li><a href="{% url 'accounts:contact' %}">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -255,8 +255,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6">
-                        <p style="color:#d99879">Created By <span style="color:#f4cca4"><b>Raza Store</b></span> 2025 &
-                            All Rights Reserved.</p>
+                            <p style="color:#d99879">&copy;Created By <span style="color:#f4cca4"><b>Raza Store</b></span> 2025. All Rights Reserved.</p>
                     </div>
                     <div class="col-xs-12 col-sm-6 text-right">
                         <a href="#"><img src="{% static 'img/footer/payment.png' %}" alt="" /></a>
