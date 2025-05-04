@@ -34,13 +34,16 @@
 			{% if request.GET.command == 'verification' %}
 			<div style="width:70%;background:#1c1427" class="alert alert-warning text-center" role="alert">
 			<br>
-			<b><p style="font-size:25px;color:#f4cca4">Check Gmail To Active Your Account</p></b></b><br><br><br>
+			<b><p style="font-size:25px;color:#f4cca4">Check Gmail To Active Your Account</p></b></b><br><span style="font-size:17px; color:white" class="txt1">
+				Verification Link in Gmail/Spam Section.
+			</span><br><br>
+			
 			<a class="btn btn-warning"  style="font-size:20px; background:#f4cca4;color:#1c1427;width:250px" href="{% url 'shop:home' %}">Back to home</a><br><br>
 			
 			</div>
 			<br>
 			{% else %}
-			<div style="width:39%;background:#1c1427" class="wrap-login100">
+			<div style="background:#1c1427" class="wrap-login100">
 				<form class="login100-form validate-form" action="{% url 'accounts:register' %}" method="POST">
 					{% csrf_token %}
 					
@@ -110,7 +113,7 @@
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
 							<button class="login100-form-btn">
-								Login
+								Register
 							</button>
 						</div>
 					</div>

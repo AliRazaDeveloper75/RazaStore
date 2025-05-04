@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-&!4%-vjbqun^7idhr9ov$3*!233xczz4zt4i1bj_x&ur14makw
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'razastore.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'razastorepk.com', 'www.razastorepk.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,12 +17,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'accounts',
     'shop',
     'cart',
     'orders',
-
     'storages',
 ]
 

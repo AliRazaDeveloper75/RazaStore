@@ -1,17 +1,79 @@
+<!-- for desktop device code -->
 {% extends '../../../base.html' %}
 {% load static %}
 {% block title %}Order Completed{% endblock title %}
 {% block content %}
 
+<style>
+  /* --------- Desktop-specific styles --------- */
+  @media (min-width: 980px) {
+    .phone-code {
+      display: none;
+    }
+  }
+
+  /* --------- Mobile-specific styles --------- */
+  @media (max-width: 980px) {
+    .desktop-code {
+      display: none;
+    }
+
+    .invoice-wrapper {
+      padding: 20px !important;
+    }
+
+    .invoice-logo img {
+      width: 100px !important;
+      height: auto !important;
+    }
+
+    .invoice-from ul {
+      font-size: 14px;
+      padding-left: 0;
+    }
+
+    .table th,
+    .table td {
+      font-size: 14px;
+      padding: 6px;
+    }
+
+    .text-center,
+    .text-left {
+      text-align: center !important;
+    }
+
+    .panel-body {
+      padding: 15px !important;
+    }
+
+    .invoice-from ul li {
+      margin-bottom: 5px;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .img-sm {
+      width: 70px !important;
+      height: 70px !important;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+</style>
+
 <div class="container" style="margin-top: 50px;">
-  
   <h2 class="text-center">Invoice Number : {{order.order_number}} </h2>
 </div>
-
-<div class="container"
+<!-- desktop code -->
+<div class="desktop-code"
   style="margin: 0 auto;width: 50%;padding: 50px;background: #1c1427;margin-top: 50px;margin-bottom: 50px;">
-  <div  class="row invoice row-printable">
-    <div  class="col-md-12">
+  <div class="row invoice row-printable">
+    <div class="col-md-12">
       <!-- col-lg-12 start here -->
       <div style="background:#1c1427" class="panel panel-default plain" id="dash_0">
         <!-- Start .panel -->
@@ -20,8 +82,8 @@
             <!-- Start .row -->
             <div class="col-lg-6">
               <!-- col-lg-6 start here -->
-              <div class="invoice-logo"><img style="border-radius:10px;" width="150" height="150" src={% static './img/logo.jpg' %} alt="Invoice logo"
-                  style="max-height:130px;"></div>
+              <div class="invoice-logo"><img style="border-radius:10px;" width="150" height="150"
+                  src="{% static './img/logo.jpg' %}" alt="Invoice logo" style="max-height:130px;"></div>
             </div>
             <!-- col-lg-6 end here -->
             <div style="font-size:18px" class="col-lg-6 ">
@@ -32,31 +94,31 @@
                   <li>{{order.full_name}}</li><br>
                   <li>{{order.address}}</li><br>
                   <li>{{order.state}}</li><br>
-                  <li>{{order.city}}</li><br>
-                  <li>{{order.country}}</li>
+                  <li>{{order.city}}</li><br />
+                  <li>{{order.country}}</li><br />
                 </ul>
               </div>
             </div>
             <!-- col-lg-6 end here -->
             <div class="col-lg-12">
-            <br>
+              <!-- <br> -->
               <!-- col-lg-12 start here -->
               <div style="font-size:16px">
                 <div style="background:#40394a" class="well">
-                  <ul  style="margin:auto">
-                    <li><strong><span >Order :</span></strong>&nbsp; {{order.order_number}}</li><br>
-                    <li><strong><span >Transaction ID :</span></strong>&nbsp; {{order.payment.payment_id}}</li><br>
-                    <li><strong><span >Order Date :</span></strong>&nbsp; {{order.order_created}}</li><br>
-                    <li><strong><span >Status :</span></strong>&nbsp; {{order.payment.status}}</li><br>
+                  <ul style="margin:auto">
+                    <li><strong><span>Order :</span></strong>&nbsp; {{order.order_number}}</li><br>
+                    <li><strong><span>Status :</span></strong>&nbsp; {{order.payment.status}}</li><br>
+                    <li><strong><span>Order Date :</span></strong>&nbsp; {{order.order_created}}</li><br>
                   </ul>
                 </div>
               </div>
-              
+
               <br>
               <div>
-                <div  style="border-radius:10px;" class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
-                  <table style="font-size:16px"  class="table table-bordered">
-                    <thead >
+                <div style="border-radius:10px;" class="table-responsive" style="overflow: hidden; outline: none;"
+                  tabindex="0">
+                  <table style="font-size:16px" class="table table-bordered">
+                    <thead>
                       <tr>
                         <th style="" class="per70 text-center">Product Image</th>
                         <th style="" class="per70 text-center">Name</th>
@@ -68,7 +130,8 @@
                     <tbody>
                       {% for item in order_detail %}
                       <tr>
-                        <td class="per70 text-center"><img src='{{item.product.image.url}}' style="border-radius:10px;" width="100" height="100" class="img-sm"></td>
+                        <td class="per70 text-center"><img src='{{item.product.image.url}}' style="border-radius:10px;"
+                            width="100" height="100" class="img-sm"></td>
                         <td>{{item.product.name}}
                           <p class="text-muted small">
                             {% if item.variations.all %}
@@ -79,30 +142,30 @@
                             {% endif %}
                           </p>
                         </td>
-                        <td class="text-center">${{item.product_price}}</td>
+                        <td class="text-center">{{item.product_price}}</td>
                         <td class="text-center">{{item.quantity}}</td>
-                        <td class="text-center">${{item.sub_total}}  </td>
+                        <td class="text-center">{{item.sub_total}} </td>
                       </tr>
                       {% endfor %}
                       <tr>
                         <th colspan="4" class="text-left">Sub Total</th>
-                        <th class="text-center">${{subtotal}}  </th>
+                        <th class="text-center">{{subtotal}} </th>
                       </tr>
                       <tr>
                         <th colspan="4" class="text-left">Handing</th>
-                        <th class="text-center">$15.0  </th>
+                        <th class="text-center">15.0 </th>
                       </tr>
                       <tr>
                         <th colspan="4" class="text-left">Tax</th>
-                        <th class="text-center">${{order.tax}}  </th>
+                        <th class="text-center">{{order.tax}} </th>
                       </tr>
-                      
+
                     </tbody>
                     <tfoot>
-                      
+
                       <tr>
                         <th colspan="4" class="text-left">Grand Total</th>
-                        <th class="text-center">${{order.order_total}}  </th>
+                        <th class="text-center">{{order.order_total}} </th>
                       </tr>
                     </tfoot>
                   </table>
@@ -122,4 +185,121 @@
     <!-- col-lg-12 end here -->
   </div>
 </div>
+
+<!-- for phone devices code  -->
+<div class="phone-code invoice-wrapper my-5 p-4" style="background: #1c1427; border-radius: 10px;">
+  <div class="row invoice row-printable">
+    <div class="col-12">
+      <div class="panel panel-default plain" style="background:#1c1427">
+        <div class="panel-body p-3">
+          <div class="row">
+            <!-- Logo -->
+            <!-- <div class="col-lg-6 col-12 mb-3 invoice-logo">
+              <img class="img-fluid rounded" src="{% static './img/logo.jpg' %}" width="150" height="150"
+                alt="Invoice logo">
+            </div> -->
+
+            <!-- Invoice To -->
+            <div class="col-lg-6 col-12" style="font-size:18px;">
+              <div class="invoice-from">
+                <ul class="list-unstyled floatright text-white">
+                  <li style="color:#d99879"><strong>Invoiced To</strong></li><br />
+                  <li>{{order.full_name}}</li><br />
+                  <li>{{order.address}}</li><br />
+                  <li>{{order.state}}</li><br />
+                  <li>{{order.city}}</li><br />
+                  <li>{{order.country}}</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Order Info -->
+            <div class="col-lg-6 col-12 invoice-logo">
+              <img class="img-fluid rounded" src="{% static './img/logo.jpg' %}" width="150" height="150"
+                alt="Invoice logo">
+            </div>
+            <div class="col-lg-6 col-12" style="margin-top: 5px;">
+              <div class="p-3" style=" font-size:16px;">
+                <ul class="list-unstyled mb-0">
+                  <li><strong>Order :</strong> {{order.order_number}}</li> <br />
+                  <li><strong></strong> {{order.order_created}}</li><br />
+                  <li><strong>Status :</strong> {{order.payment.status}}</li>
+                </ul>
+              </div>
+            </div>
+            <!-- Order Table -->
+            <div class="col-12 mt-4">
+              <div class="table-responsive d-block d-sm-none"> <!-- Only shows responsive behavior on xs screens -->
+                <table class="table table-bordered text-center" style="font-size:16px;">
+                  <!-- Table content remains the same -->
+                </table>
+              </div>
+
+              <!-- Regular table for larger screens -->
+              <div class="d-none d-sm-block">
+                <table class="table table-bordered text-center" style="font-size:16px;">
+                  <thead>
+                    <tr>
+                      <th>Product Image</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Qty</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in order_detail %}
+                    <tr>
+                      <td><img src="{{item.product.image.url}}" class="img-sm rounded" width="100" height="100"
+                          alt="Product"></td>
+                      <td>
+                        {{item.product.name}}
+                        <p class="text-muted small mb-0">
+                          {% if item.variations.all %}
+                          {% for i in item.variations.all %}
+                          {{ i.variation_category|capfirst }}: {{ i.variation_value|capfirst }}<br>
+                          {% endfor %}
+                          {% endif %}
+                        </p>
+                      </td>
+                      <td>{{item.product_price}}</td>
+                      <td>{{item.quantity}}</td>
+                      <td>{{item.sub_total}}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                      <th colspan="4" class="text-left">Sub Total</th>
+                      <th>{{subtotal}}</th>
+                    </tr>
+                    <tr>
+                      <th colspan="4" class="text-left">Handling</th>
+                      <th>15.00</th>
+                    </tr>
+                    <tr>
+                      <th colspan="4" class="text-left">Tax</th>
+                      <th>{{order.tax}}</th>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th colspan="4" class="text-left" >Grand Total</th>
+                      <th>{{order.order_total}}</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="col-12 mt-3">
+              <p class="text-center" style="color:#d99879;">Thank you for shopping with us!</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock content %}

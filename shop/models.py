@@ -25,7 +25,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
-    description = models.TextField(max_length=300, blank=True)
+    description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     discount = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     image = models.ImageField(upload_to='photos/products')

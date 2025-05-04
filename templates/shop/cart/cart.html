@@ -60,7 +60,7 @@
 											
 										</div>
 										</td>
-										<td>${{cart_item.product.price}}</td>
+										<td>PK {{cart_item.product.price}}</td>
 										<td>
 										<div class="plus-minus" >
 										<form style="" action="{% url 'cart:add_cart' cart_item.product.id %}" method="POST">
@@ -85,7 +85,7 @@
 										</div>
 										</td>
 										<td >
-											<strong style="color:#f4cca4">${{cart_item.sub_total}}</strong>
+											<strong style="color:#f4cca4">PK {{cart_item.sub_total}}</strong>
 										</td>
 										<td ><a href="{% url 'cart:remove_cart_item' cart_item.product.id cart_item.id %}" ><i style="background:#ba135d;color:#f4cca4" onclick="return confirm('Are you really want delete this?')" class="mdi mdi-close"></i></a></td>
 									</tr>
@@ -99,21 +99,18 @@
 									<tbody style="color:#f4cca4">
 										<tr>
 											<th style="font-size:18px">Cart Subtotal</th>
-											<td style="font-size:18px">${{total}}</td>
+											<td style="font-size:18px">PK {{total}}</td>
 										</tr>
 										<tr>
-											<th style="font-size:18px">Shipping and Handing</th>
-											<td style="font-size:18px">${{handing}}</td>
+											<th style="font-size:18px">Shipping</th>
+											<td style="font-size:18px"> Free Delivery</td>
 										</tr>
-										<tr>
-											<th style="font-size:18px">Vat</th>
-											<td style="font-size:18px">${{vat}}</td>
-										</tr>
+										
 									</tbody>
 									<tfoot>
 										<tr>
 											<th style="color:#d99879; font-size:22px" class="tfoot-padd">Order total</th>
-											<td style="color:#d99879; font-size:22px" class="tfoot-padd">${{order_total}}</td>
+											<td style="color:#d99879; font-size:22px" class="tfoot-padd">PK {{order_total}}</td>
 										</tr>
 									</tfoot>
 								</table>
@@ -141,21 +138,21 @@
 									<tbody style="color:#f4cca4">
 										<tr>
 											<th>Cart Subtotal</th>
-											<td>${{total}}</td>
+											<td>PK {{total}}</td>
 										</tr>
 										<tr>
 											<th>Shipping and Handing</th>
-											<td>${{handing}}</td>
+											<td>PK {{handing}}</td>
 										</tr>
 										<tr>
 											<th>Vat</th>
-											<td>${{vat}}</td>
+											<td>PK {{vat}}</td>
 										</tr>
 									</tbody>
 									<tfoot>
 										<tr>
 											<th style="color:#d99879" class="tfoot-padd">Order total</th>
-											<td style="color:#d99879" class="tfoot-padd">${{order_total}}</td>
+											<td style="color:#d99879" class="tfoot-padd">PK {{order_total}}</td>
 										</tr>
 										
 								</tfoot>

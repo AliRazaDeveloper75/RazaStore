@@ -72,8 +72,17 @@
               <h2><strong style="color: #d99879">Payment Method</strong></h2>
               <br />
             </div>
-            <h3 style="font-size: 15px; margin-left: 30px" class="floatleft">
-              Paypal
+            <h3 style="font-size: 15px; margin-left: 30px; cursor:pointer" class="floatleft">
+              Easy Paisa
+            </h3>
+            <h3 style="font-size: 15px; margin-left: 30px; cursor:pointer" class="floatleft">
+              Bank
+            </h3>
+            <h3 style="font-size: 15px; margin-left: 30px; cursor:pointer" class="floatleft">
+              Jazz Cash
+            </h3>
+            <h3 style="font-size: 15px; margin-left: 30px; cursor:pointer" class="floatleft">
+              Others
             </h3>
             <br /><br />
           </div>
@@ -114,20 +123,12 @@
                 {% for cart_item in cart_items %}
                 <tr>
                   <th>{{cart_item.product.name}} x {{cart_item.quantity}}</th>
-                  <td>${{cart_item.sub_total}}</td>
+                  <td>{{cart_item.sub_total}}</td>
                 </tr>
                 {% endfor %}
-                <tr>
-                  <th>Shipping and Handing</th>
-                  <td>${{handing}}</td>
-                </tr>
-                <tr>
-                  <th>Vat</th>
-                  <td>${{vat}}</td>
-                </tr>
                 <tr style="color: #d99879">
                   <th>Order total</th>
-                  <td>${{order_total}}</td>
+                  <td>{{order_total}}</td>
                 </tr>
               </tbody>
               <tfoot></tfoot>

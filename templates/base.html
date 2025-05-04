@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}E - S H O P{% endblock title %}</title>
+    <title>{% block title %}RazaStore{% endblock title %}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon -->
@@ -112,10 +112,10 @@
                                 <li>
                                     <a style="color:#f4cca4" href="#"><i class="mdi mdi-settings"></i></a>
                                     <ul style="background:#1c1427">
-                                        <li><a href="my-account.html">My account</a></li>
-                                        <li><a href="cart.html">My cart</a></li>
-                                        <li><a href="wishlist.html">My wishlist</a></li>
-                                        <li><a href="checkout.html">Check out</a></li>
+                                        <li><a href="{% url 'accounts:dashboard' %}">My account</a></li>
+                                        <li><a href="{% url 'cart:cart' %}">My cart</a></li>
+                                         <!--<li><a href="wishlist.html">My wishlist</a></li>
+                                        <li><a href="checkout.html">Check out</a></li>-->
                                     </ul>
                                 </li>
                             </ul>
@@ -206,7 +206,7 @@
                         <a class="cart-itme-a" href="{% url 'cart:cart' %}">
 
                             <i class="mdi mdi-cart"></i>
-                            {{quantityyy}} items : <strong>${{totalll}}</strong>
+                            {{quantityyy}} items : <strong>{{totalll}}</strong>
                         </a>
                         <div class="cartdrop">
                             {% for x in cart_itemsss %}
@@ -232,7 +232,7 @@
                             {% endfor %}
                             
                             <div class="total">
-                                <span>total <strong>= ${{totalll}}</strong></span>
+                                <span>total <strong>= {{totalll}}</strong></span>
                             </div><br>
                             {% if '/cart/' not in request.path %}
                             <a style="background:#40394a;color:#f4cca4" class="out-menu" href="{% url 'cart:cart' %}">Go To Cart</a>
@@ -250,21 +250,63 @@
     {% endblock content %}
 
 
-    <footer>
-        <div  style="background:#3f3350" class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6">
-                            <p style="color:#d99879">&copy;Created By <span style="color:#f4cca4"><b>Raza Store</b></span> 2025. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 text-right">
-                        <a href="#"><img src="{% static 'img/footer/payment.png' %}" alt="" /></a>
-                    </div>
+   <footer>
+    <div style="background:#3f3350; padding: 40px 0; color: #fff; font-family: Arial, sans-serif;" class="footer-bottom">
+        <div class="container">
+            <div class="row" style="display: flex;  justify-content: space-between; align-items: center;">
+                
+                <!-- About Section -->
+                <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
+                    <h4 style="color:#f4cca4; margin-bottom: 10px;">About Us</h4>
+                    <p style="color:#d99879; font-size: 14px;">
+                        Raza Store is your one-stop shop for quality products at affordable prices. We value trust, excellence, and customer satisfaction.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
+                    <h4 style="color:#f4cca4; margin-bottom: 10px;">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" style="color: #d99879; text-decoration: none;">Home</a></li><br/>
+                        <li><a href="#" style="color: #d99879; text-decoration: none;">Shop</a></li><br/>
+                        <li><a href="#" style="color: #d99879; text-decoration: none;">Contact Us</a></li><br/>
+                        <li><a href="#" style="color: #d99879; text-decoration: none;">FAQs</a></li><br/>
+                    </ul>
+                </div>
+
+              <!-- Social Media LInks -->
+              <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
+                <h4 style="color:#f4cca4; margin-bottom: 10px;">Social Links</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="#" style="color: #d99879; text-decoration: none;">Facebook</a></li><br/>
+                    <li><a href="#" style="color: #d99879; text-decoration: none;">Instagram</a></li><br/>
+                    <li><a href="#" style="color: #d99879; text-decoration: none;">Youtue</a></li><br/>
+                    <li><a href="#" style="color: #d99879; text-decoration: none;">Whatapps</a></li><br/>
+                </ul>
+            </div>
+                <!-- Contact & Payment -->
+                <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
+                    <h4 style="color:#f4cca4; margin-bottom: 10px;">Contact Us</h4>
+                    <p style="color:#d99879; font-size: 14px; margin: 0;">Phone: +92-300-1234567</p>
+                    <p style="color:#d99879; font-size: 14px; margin: 0;">Address: Raza Store Office, Gulberg III, Lahore Pakistan.</p>
+                    <p style="color:#d99879; font-size: 14px; margin: 0;">Email: support@razastore.com</p>
+                    <!-- <a href="#"><img src="{% static 'img/footer/payment.png' %}" alt="Payments" style="margin-top: 10px; max-width: 100%;" /></a>-->
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="row" style="border-top: 1px solid #715f8b; margin-top: 30px; padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                <div class="col-xs-12 col-sm-6">
+                    <p style="color:#d99879; font-size: 13px;">&copy; Created By <span style="color:#f4cca4;"><b>Raza Store</b></span> 2025. All Rights Reserved.</p>
+                </div>
+                <div class="col-xs-12 col-sm-6" style="text-align: right;">
+                    <a href="#"><img src="{% static 'img/footer/payment.png' %}" alt="Payments" style="margin-top: 10px; max-width: 100%;" /></a>
                 </div>
             </div>
         </div>
-        <!-- footer-bottom area end -->
-    </footer>
+    </div>
+</footer>
+
     <!-- footer section end -->
 
     <!-- all js here -->
