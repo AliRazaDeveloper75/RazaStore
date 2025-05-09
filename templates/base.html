@@ -85,7 +85,7 @@
                         <div class="middel-top">
                             {% if user.id is None %}
                             <div class="left floatleft">
-                                <p style="color:#f4cca4"><b>Welcome Guest!</b></p>
+                                <p style="color:#f4cca4"><b>Free Delivery/Cash On Delivery!</b></p>
                             </div>
                             {% else %}
                             <div class="left floatleft">
@@ -171,7 +171,7 @@
                                             {% endfor %}
                                         </ul>
                                     </li>
-                                    {% comment %} <li><a href="blog.html">Blog</a></li> {% endcomment %}
+                                    
                                     <li><a href="{% url 'accounts:about' %}">About</a></li>
                                     <li><a href="{% url 'accounts:contact' %}">Contact</a></li>
                                 </ul>
@@ -192,7 +192,7 @@
                                                 {% endfor %}
                                             </ul>
                                         </li>
-                                        {% comment %} <li><a style="color:#1c1427" href="blog.html">Blog</a></li> {% endcomment %}
+                                        
                                         <li><a href="{% url 'accounts:about' %}">About</a></li>
                                     <li><a href="{% url 'accounts:contact' %}">Contact</a></li>
                                     </ul>
@@ -223,9 +223,9 @@
                                         <span>{{item.variation_category | capfirst}} : {{item.variation_value | capfirst}}</span>
                                         {% endfor %}
                                     {% endif %}
-                                    <span>Price for each : ${{x.product.price}}</span>
+                                    <span>Price for each : {{x.product.price}}</span>
                                     <span>Quantity : {{x.quantity}}</span>
-                                    <strong>${{x.sub_total}}</strong>
+                                    <strong>{{x.sub_total}}</strong>
                                 </div>
                             </div>
                             
@@ -250,62 +250,186 @@
     {% endblock content %}
 
 
-   <footer>
-    <div style="background:#3f3350; padding: 40px 0; color: #fff; font-family: Arial, sans-serif;" class="footer-bottom">
-        <div class="container">
-            <div class="row" style="display: flex;  justify-content: space-between; align-items: center;">
-                
+    <style>
+        /* Footer Base Styles */
+        footer {
+            font-family: Arial, sans-serif;
+            background: #3f3350;
+            color: #fff;
+        }
+    
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+    
+        .footer-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+        }
+    
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+    
+        /* Footer Content Styles */
+        .footer-title {
+            color: #f4cca4;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    
+        .footer-text {
+            color: #d99879;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+    
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px; /* This creates consistent spacing between items */
+        }
+    
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+    
+        .footer-links a {
+            color: #d99879;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+    
+        .footer-links a:hover {
+            color: #f4cca4;
+        }
+    
+        /* Footer Bottom Styles */
+        .last-footer-bottom {
+            border-top: 1px solid #715f8b;
+            padding-top: 20px;
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .copyright {
+            color: #d99879;
+            font-size: 13px;
+        }
+    
+        .brand {
+            color: #f4cca4;
+            font-weight: bold;
+        }
+    
+        .payment-methods {
+            max-width: 100%;
+            height: auto;
+        }
+    
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .footer-col {
+                flex: 0 0 45%;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .footer-container {
+                padding: 30px 15px;
+            }
+            
+            .footer-col {
+                flex: 0 0 100%;
+                text-align: center;
+            }
+            
+            .footer-links {
+                display: inline-block;
+                text-align: left;
+            }
+            
+            .last-footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .payment-methods {
+                margin-top: 15px;
+            }
+        }
+    </style>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-row">
                 <!-- About Section -->
-                <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-                    <h4 style="color:#f4cca4; margin-bottom: 10px;">About Us</h4>
-                    <p style="color:#d99879; font-size: 14px;">
-                        Raza Store is your one-stop shop for quality products at affordable prices. We value trust, excellence, and customer satisfaction.
+                <div class="footer-col">
+                    <h4 class="footer-title">About Us</h4>
+                    <p class="footer-text">
+                        Raza Store is your one-stop shop for quality products at affordable prices. 
+                        We value trust, excellence, and customer satisfaction.
                     </p>
                 </div>
-
+    
                 <!-- Quick Links -->
-                <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-                    <h4 style="color:#f4cca4; margin-bottom: 10px;">Quick Links</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="#" style="color: #d99879; text-decoration: none;">Home</a></li><br/>
-                        <li><a href="#" style="color: #d99879; text-decoration: none;">Shop</a></li><br/>
-                        <li><a href="#" style="color: #d99879; text-decoration: none;">Contact Us</a></li><br/>
-                        <li><a href="#" style="color: #d99879; text-decoration: none;">FAQs</a></li><br/>
+                <div class="footer-col">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
                     </ul>
                 </div>
-
-              <!-- Social Media LInks -->
-              <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-                <h4 style="color:#f4cca4; margin-bottom: 10px;">Social Links</h4>
-                <ul style="list-style: none; padding: 0;">
-                    <li><a href="#" style="color: #d99879; text-decoration: none;">Facebook</a></li><br/>
-                    <li><a href="#" style="color: #d99879; text-decoration: none;">Instagram</a></li><br/>
-                    <li><a href="#" style="color: #d99879; text-decoration: none;">Youtue</a></li><br/>
-                    <li><a href="#" style="color: #d99879; text-decoration: none;">Whatapps</a></li><br/>
-                </ul>
-            </div>
-                <!-- Contact & Payment -->
-                <div class="col-xs-12 col-sm-4" style="margin-bottom: 20px;">
-                    <h4 style="color:#f4cca4; margin-bottom: 10px;">Contact Us</h4>
-                    <p style="color:#d99879; font-size: 14px; margin: 0;">Phone: +92-300-1234567</p>
-                    <p style="color:#d99879; font-size: 14px; margin: 0;">Address: Raza Store Office, Gulberg III, Lahore Pakistan.</p>
-                    <p style="color:#d99879; font-size: 14px; margin: 0;">Email: support@razastore.com</p>
-                    <!-- <a href="#"><img src="{% static 'img/footer/payment.png' %}" alt="Payments" style="margin-top: 10px; max-width: 100%;" /></a>-->
+    
+                <!-- Social Media Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Social Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">WhatsApp</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Info -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact Us</h4>
+                    <p class="footer-text">Phone: +92 300 320 9005</p>
+                    <p class="footer-text">Address: Raza Store Office, Gulberg III, Lahore Pakistan.</p>
+                    <p class="footer-text">Email: razastoresupport@gmail.com</p>
                 </div>
             </div>
-
+    
             <!-- Footer Bottom -->
-            <div class="row" style="border-top: 1px solid #715f8b; margin-top: 30px; padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-                <div class="col-xs-12 col-sm-6">
-                    <p style="color:#d99879; font-size: 13px;">&copy; Created By <span style="color:#f4cca4;"><b>Raza Store</b></span> 2025. All Rights Reserved.</p>
+            <div class="last-footer-bottom">
+                <div>
+                    <p class="copyright">&copy; Created By <span class="brand">Raza Store</span> 2025. All Rights Reserved.</p>
                 </div>
-                <div class="col-xs-12 col-sm-6" style="text-align: right;">
-                    <a href="#"><img src="{% static 'img/footer/payment.png' %}" alt="Payments" style="margin-top: 10px; max-width: 100%;" /></a>
+                <div>
+                    <img src="{% static 'img/footer/payment.png' %}" alt="Payment Methods" class="payment-methods">
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <!-- footer section end -->
 
